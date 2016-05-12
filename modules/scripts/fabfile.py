@@ -1240,7 +1240,7 @@ def set_copy_jobs(dbg=0):
 
 	for dir in  env.job_dirs:
 		if env.job_dirs[dir] == "ADD":
-			cmd = "mkdir -p %s%s" % (dest_path, dir)
+			cmd = "mkdir -p \"%s%s\"" % (dest_path, dir)
 
 			if dbg in ["1","2"]:
 				print(cmd)
@@ -1251,10 +1251,10 @@ def set_copy_jobs(dbg=0):
 	for file in  env.job_list:
 		cmd = ''
 		if env.job_list[file] == "DEL":
-			cmd = "rm %s/%s" % (dest_path, file)
+			cmd = "rm \"%s/%s\"" % (dest_path, file)
 
 		if env.job_list[file] in ["ADD","MOD"]:
-			cmd = "cp -rp %s/%s %s/%s" % ( source_path, file[1:], dest_path,  file[1:] )
+			cmd = "cp -rp \"%s/%s\" \"%s/%s\"" % ( source_path, file[1:], dest_path,  file[1:] )
 
 		if cmd != '':
 			if dbg in ["1","2"]:
